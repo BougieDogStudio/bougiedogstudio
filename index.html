@@ -70,10 +70,13 @@
             width: auto;
         }
 
+        /* Mobile Responsive Nav Fix */
         nav ul {
             display: flex;
+            flex-wrap: wrap; /* Wrap menu items on mobile */
+            justify-content: flex-end;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
         }
 
         nav a {
@@ -82,6 +85,7 @@
             font-weight: 900;
             font-size: 0.85rem;
             transition: opacity 0.2s;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -109,13 +113,13 @@
             text-transform: uppercase;
         }
 
-        /* Script Logo in Hero Space (BLK Logo) */
+        /* Script Logo (BLK Logo) - Resized Smaller */
         .hero-script-logo {
             position: absolute;
             bottom: 40px;
             right: 40px;
-            max-width: 350px;
-            width: 40%;
+            max-width: 260px;
+            width: 30%;
             height: auto;
         }
 
@@ -190,7 +194,6 @@
         .about-text h2 { font-size: 3rem; margin-bottom: 15px; }
         .about-text p { font-size: 1.1rem; font-weight: 600; line-height: 1.6; }
 
-        /* Music Project Card */
         .music-card {
             border: var(--border-width) solid var(--black);
             padding: 30px;
@@ -292,7 +295,7 @@
             padding-top: 40px;
         }
 
-        /* --- Modal (Dynamic Gallery) --- */
+        /* --- Modal --- */
         #detail-view {
             position: fixed;
             top: 0;
@@ -334,10 +337,7 @@
             margin-top: 40px;
         }
 
-        .detail-item {
-            width: 100%;
-        }
-
+        .detail-item { width: 100%; }
         .detail-item img {
             width: 100%;
             height: auto;
@@ -347,20 +347,21 @@
 
         .detail-item-caption {
             margin-top: 10px;
-            font-family: 'Inter', sans-serif;
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.9rem;
-            color: var(--black);
             border-left: 8px solid var(--primary);
             padding-left: 15px;
         }
 
         /* Responsive adjustments */
         @media (max-width: 900px) {
-            header { flex-direction: column; gap: 15px; }
+            header { flex-direction: column; padding: 20px; }
+            nav { width: 100%; margin-top: 15px; }
+            nav ul { justify-content: center; gap: 10px; }
             .about-music { flex-direction: column; text-align: center; }
-            .hero-script-logo { position: static; width: 80%; margin-top: 40px; margin-left: auto; margin-right: auto; }
+            .hero { padding: 60px 20px 100px 20px; }
+            .hero-script-logo { position: static; width: 60%; margin-top: 40px; margin-left: auto; margin-right: auto; }
             .work-grid { grid-template-columns: 1fr; }
             .contact-area h2 { font-size: 2.5rem; }
             .music-links { grid-template-columns: 1fr; }
@@ -383,6 +384,7 @@
                     <li><a href="#work" onclick="closeDetail()">Stickers</a></li>
                     <li><a href="#work" onclick="closeDetail()">Apparel</a></li>
                     <li><a href="#work" onclick="closeDetail()">Goods</a></li>
+                    <li><a href="#work" onclick="closeDetail()">Print</a></li>
                     <li><a href="#work" onclick="closeDetail()">Website</a></li>
                     <li><a href="#work" onclick="closeDetail()">Sound Logo</a></li>
                     <li><a href="#contact" onclick="closeDetail()">Contact</a></li>
@@ -399,29 +401,29 @@
 
         <!-- Gallery Grid -->
         <main class="work-grid" id="work">
-            <!-- STICKERS: 3 images -->
-            <article class="work-item" onclick="openDetail('STICKERS', 'GALLERY', '愛らしいわんこやにゃんこのステッカー。あなた特製のステッカーも作れます。', [
-                {path: 'images/stickers/stickers1.jpg'},
-                {path: 'images/stickers/stickers2.jpg'},
-                {path: 'images/stickers/stickers3.jpg'}
+            <!-- STICKERS -->
+            <article class="work-item" onclick="openDetail('STICKERS', 'GALLERY', 'ペットサロンの犬たちをモデルにした特製ステッカー。愛犬の個性を太いラインで表現。', [
+                {path: 'images/stickers/stickers1.png'},
+                {path: 'images/stickers/stickers2.png'},
+                {path: 'images/stickers/stickers3.png'}
             ])">
                 <div class="work-image">
                     <img src="https://placehold.co/800x800/f36f21/white?text=STICKERS" alt="Stickers">
                 </div>
                 <div class="work-info">
                     <h3>STICKERS</h3>
-                    <p>愛らしいわんこやにゃんこのステッカー。あなた特製のステッカーも作れます。</p>
+                    <p>ペットサロンの犬たちをモデルにした特製ステッカー。愛犬の個性を太いラインで表現。</p>
                 </div>
             </article>
 
-            <!-- APPAREL: 6 images -->
+            <!-- APPAREL -->
             <article class="work-item" onclick="openDetail('APPAREL', 'GALLERY', 'Tシャツ、フーディ、わんこ用ウェアなど。長く愛用できるタフな素材とグラフィック。', [
-                {path: 'images/apparel/apparel1.jpg'},
-                {path: 'images/apparel/apparel2.jpg'},
-                {path: 'images/apparel/apparel3.jpg'},
-                {path: 'images/apparel/apparel4.jpg'},
-                {path: 'images/apparel/apparel5.jpg'},
-                {path: 'images/apparel/apparel6.jpg'}
+                {path: 'images/apparel/apparel1.png'},
+                {path: 'images/apparel/apparel2.png'},
+                {path: 'images/apparel/apparel3.png'},
+                {path: 'images/apparel/apparel4.png'},
+                {path: 'images/apparel/apparel5.png'},
+                {path: 'images/apparel/apparel6.png'}
             ])">
                 <div class="work-image">
                     <img src="https://placehold.co/800x800/333333/white?text=APPAREL" alt="Apparel">
@@ -432,47 +434,63 @@
                 </div>
             </article>
 
-            <!-- GOODS: 6 images -->
+            <!-- GOODS -->
             <article class="work-item" onclick="openDetail('GOODS', 'GALLERY', 'マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。', [
-                {path: 'images/goods/goods1.jpg'},
-                {path: 'images/goods/goods2.jpg'},
-                {path: 'images/goods/goods3.jpg'},
-                {path: 'images/goods/goods4.jpg'},
-                {path: 'images/goods/goods5.jpg'},
-                {path: 'images/goods/goods6.jpg'}
+                {path: 'images/goods/goods1.png'},
+                {path: 'images/goods/goods2.png'},
+                {path: 'images/goods/goods3.png'},
+                {path: 'images/goods/goods4.png'},
+                {path: 'images/goods/goods5.png'},
+                {path: 'images/goods/goods6.png'}
             ])">
                 <div class="work-image">
                     <img src="https://placehold.co/800x800/f36f21/white?text=GOODS" alt="Goods">
                 </div>
                 <div class="work-info">
                     <h3>GOODS</h3>
-                    <p>マグカップや小物など。実用性とデザインを兼ね備え特製グッズ。</p>
+                    <p>マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。</p>
                 </div>
             </article>
 
-            <!-- WEBSITE: 3 images -->
-            <article class="work-item" onclick="openDetail('WEBSITE', 'GALLERY', 'ディレクションからデザインまで手がけたサイト実績。シンプルでわかりやすいウェブサイトを。', [
-                {path: 'images/website/website1.jpg'},
-                {path: 'images/website/website2.jpg'},
-                {path: 'images/website/website3.jpg'}
+            <!-- PRINT -->
+            <article class="work-item" onclick="openDetail('PRINT', 'GALLERY', 'フライヤー、名刺など。デジタルと統一感のある物理媒体の制作実績。', [
+                {path: 'images/print/print1.png'},
+                {path: 'images/print/print2.png'},
+                {path: 'images/print/print3.png'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/333333/white?text=WEBSITE" alt="Website">
+                    <img src="https://placehold.co/800x800/333333/white?text=PRINT" alt="Print">
+                </div>
+                <div class="work-info">
+                    <h3>PRINT</h3>
+                    <p>フライヤー、名刺など。デジタルと統一感のある物理媒体の制作実績。</p>
+                </div>
+            </article>
+
+            <!-- WEBSITE -->
+            <article class="work-item" onclick="openDetail('WEBSITE', 'GALLERY', 'ディレクションからデザインまで手がけたサイト実績。堅牢で使いやすいウェブサイトを。', [
+                {path: 'images/website/website1.png'},
+                {path: 'images/website/website2.png'},
+                {path: 'images/website/website3.png'},
+                {path: 'images/website/website4.png'}
+            ])">
+                <div class="work-image">
+                    <img src="https://placehold.co/800x800/f36f21/white?text=WEBSITE" alt="Website">
                 </div>
                 <div class="work-info">
                     <h3>WEBSITE</h3>
-                    <p>ディレクションからデザインまで手がけたサイト実績。シンプルでわかりやすいウェブサイトを。</p>
+                    <p>ディレクションからデザインまで手がけたサイト実績。堅牢で使いやすいウェブサイトを。</p>
                 </div>
             </article>
 
-            <!-- SOUND LOGO: 3 images with Descriptions -->
-            <article class="work-item" onclick="openDetail('SOUND LOGO', 'GALLERY', '「音のブランディング」とオーディオ・アイデンティティ。', [
-                {path: 'images/soundlogo/soundlogo1.jpg', caption: 'ここに1行説明を入れてください（例：CM用サウンドロゴ）'},
-                {path: 'images/soundlogo/soundlogo2.jpg', caption: 'ここに1行説明を入れてください（例：アプリ用ジングル）'},
-                {path: 'images/soundlogo/soundlogo3.jpg', caption: 'ここに1行説明を入れてください（例：展示会用BGM制作）'}
+            <!-- SOUND LOGO -->
+            <article class="work-item" onclick="openDetail('SOUND LOGO', 'GALLERY', 'ブランドの魂を音に。記憶に残るオーディオ・ブランディング。', [
+                {path: 'images/soundlogo/soundlogo1.png', caption: 'りそな銀行キャラクターソング'},
+                {path: 'images/soundlogo/soundlogo2.png', caption: 'TikTokチャレンジキャンペーンサウンド'},
+                {path: 'images/soundlogo/soundlogo3.png', caption: 'アーティストRemixes（comingsoon）'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/f36f21/white?text=SOUND+LOGO" alt="Sound Logo">
+                    <img src="https://placehold.co/800x800/333333/white?text=SOUND+LOGO" alt="Sound Logo">
                 </div>
                 <div class="work-info">
                     <h3>SOUND LOGO</h3>
@@ -516,7 +534,7 @@
         </footer>
     </div>
 
-    <!-- Detail View Modal -->
+    <!-- Detail Modal -->
     <div id="detail-view">
         <div class="detail-container">
             <div class="close-btn" onclick="closeDetail()">CLOSE [X]</div>
@@ -526,7 +544,7 @@
                 <div id="detail-text" style="font-size: 1.25rem; line-height: 1.5; font-weight: 600; max-width: 800px;">Description</div>
                 
                 <div class="detail-gallery-grid" id="detail-gallery">
-                    <!-- Dynamic Items injected here via openDetail() -->
+                    <!-- Dynamic Items injected here -->
                 </div>
 
                 <div style="margin-top: 60px; border-top: var(--border-width) solid var(--black); padding-top: 30px; text-align: center;">
@@ -537,10 +555,6 @@
     </div>
 
     <script>
-        /**
-         * Open Detail Modal and inject project-specific items
-         * imageItems: array of objects { path: string, caption?: string }
-         */
         function openDetail(title, category, description, imageItems) {
             document.getElementById('detail-title').innerText = title;
             document.getElementById('detail-category').innerText = category;
@@ -556,13 +570,11 @@
                 const img = document.createElement('img');
                 img.src = item.path;
                 img.alt = title;
-                // Fallback for missing images
                 img.onerror = function() {
                     this.src = `https://placehold.co/1200x800/1a1a1a/fff?text=File+Missing:+${item.path}`;
                 };
                 wrapper.appendChild(img);
 
-                // Add caption if provided
                 if (item.caption) {
                     const cap = document.createElement('div');
                     cap.className = 'detail-item-caption';
@@ -574,15 +586,14 @@
             });
 
             document.getElementById('detail-view').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeDetail() {
             document.getElementById('detail-view').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable background scrolling
+            document.body.style.overflow = 'auto';
         }
 
-        // Close on ESC key
         window.addEventListener('keydown', function(e) {
             if (e.key === "Escape") closeDetail();
         });
