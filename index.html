@@ -117,8 +117,8 @@
         .hero-script-logo {
             position: absolute;
             bottom: 30px;
-            right: 40px; /* Moved to bottom-right */
-            max-width: 130px; /* Small signature size */
+            right: 40px;
+            max-width: 130px;
             width: 12%;
             height: auto;
             opacity: 0.8;
@@ -153,12 +153,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Default: Full color for mobile and touch devices */
             filter: grayscale(0%);
             transition: all 0.4s ease;
         }
 
-        /* Apply grayscale interaction ONLY on devices that support hover (PC) */
         @media (hover: hover) {
             .work-image img {
                 filter: grayscale(100%);
@@ -169,7 +167,6 @@
             }
         }
 
-        /* Scale effect for mobile touch to give feedback */
         .work-item:active .work-image img {
             transform: scale(0.98);
         }
@@ -198,7 +195,24 @@
 
         .about-text { max-width: 600px; }
         .about-text h2 { font-size: 3rem; margin-bottom: 15px; }
-        .about-text p { font-size: 1.1rem; font-weight: 600; line-height: 1.6; }
+        .about-text p { font-size: 1.1rem; font-weight: 600; line-height: 1.6; margin-bottom: 25px; }
+
+        /* New Music Projects Button */
+        .view-projects-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            border: var(--border-width) solid var(--black);
+            transition: all 0.2s;
+            font-size: 1.2rem;
+        }
+
+        .view-projects-btn:hover {
+            background: var(--primary);
+            color: var(--black);
+        }
 
         .music-card {
             border: var(--border-width) solid var(--black);
@@ -368,7 +382,6 @@
             .about-music { flex-direction: column; text-align: center; }
             .hero { padding: 60px 20px 100px 20px; }
             
-            /* Mobile Tiny Signature Logo in bottom-right */
             .hero-script-logo { 
                 position: absolute; 
                 bottom: 15px; 
@@ -519,13 +532,14 @@
             <div class="about-text">
                 <h2>DESIGN & BEATS.</h2>
                 <p>視覚と聴覚を融合させたクリエイティブ。Bougie Dog Studioは、あなたのブランドに強さとリズムを与えます。</p>
+                <a href="/music/" class="btn view-projects-btn">VIEW ALL PROJECTS →</a>
             </div>
             
             <div class="music-card">
                 <div class="music-header">
                     <img src="images/Bougie Dog Club RED.png" alt="Bougie Dog Club RED" class="bdc-logo-red" onerror="this.src='https://placehold.co/100x100/ff0000/fff?text=BDC+RED'">
                     <div>
-                        <span style="font-size: 0.7rem; font-weight: 900; opacity: 0.5;">MUSIC PROJECT</span>
+                        <span style="font-size: 0.7rem; font-weight: 900; opacity: 0.5;">STUDIO SIGNATURE SOUND</span>
                         <h4 style="font-size: 1.1rem;">BOUGIE DOG CLUB</h4>
                     </div>
                 </div>
