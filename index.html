@@ -153,13 +153,25 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%);
+            /* Default: Full color for mobile and touch devices */
+            filter: grayscale(0%);
             transition: all 0.4s ease;
         }
 
-        .work-item:hover .work-image img {
-            filter: grayscale(0%);
-            transform: scale(1.03);
+        /* Apply grayscale interaction ONLY on devices that support hover (PC) */
+        @media (hover: hover) {
+            .work-image img {
+                filter: grayscale(100%);
+            }
+            .work-item:hover .work-image img {
+                filter: grayscale(0%);
+                transform: scale(1.03);
+            }
+        }
+
+        /* Scale effect for mobile touch to give feedback */
+        .work-item:active .work-image img {
+            transform: scale(0.98);
         }
 
         .work-info {
