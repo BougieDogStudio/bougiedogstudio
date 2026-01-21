@@ -113,14 +113,15 @@
             text-transform: uppercase;
         }
 
-        /* Script Logo (BLK Logo) - Resized Smaller */
+        /* Script Logo (BLK Logo) - Tiny "Signature" style in bottom-right */
         .hero-script-logo {
             position: absolute;
-            bottom: 40px;
-            right: 40px;
-            max-width: 260px;
-            width: 30%;
+            bottom: 30px;
+            right: 40px; /* Moved to bottom-right */
+            max-width: 130px; /* Small signature size */
+            width: 12%;
             height: auto;
+            opacity: 0.8;
         }
 
         /* --- Work Gallery --- */
@@ -165,17 +166,10 @@
             padding: 30px;
         }
 
-        .work-info h3 {
-            font-size: 2.8rem;
-            margin-bottom: 5px;
-            line-height: 0.9;
-        }
-
         .work-info p {
             font-weight: 700;
-            color: #666;
-            margin-top: 15px;
-            font-size: 0.95rem;
+            color: var(--black);
+            font-size: 1.1rem;
             line-height: 1.4;
         }
 
@@ -361,7 +355,18 @@
             nav ul { justify-content: center; gap: 10px; }
             .about-music { flex-direction: column; text-align: center; }
             .hero { padding: 60px 20px 100px 20px; }
-            .hero-script-logo { position: static; width: 60%; margin-top: 40px; margin-left: auto; margin-right: auto; }
+            
+            /* Mobile Tiny Signature Logo in bottom-right */
+            .hero-script-logo { 
+                position: absolute; 
+                bottom: 15px; 
+                right: 20px; 
+                left: auto;
+                width: 80px; 
+                max-width: none; 
+                opacity: 0.8;
+            }
+            
             .work-grid { grid-template-columns: 1fr; }
             .contact-area h2 { font-size: 2.5rem; }
             .music-links { grid-template-columns: 1fr; }
@@ -396,12 +401,13 @@
         <section class="hero">
             <h2>DESIGN THAT WORKS AS HARD AS YOU DO.</h2>
             <p>Crafting bold identities & functional artifacts since 2018.</p>
-            <img src="images/Bougie Dog Studio BLK.png" alt="Bougie Dog Studio BLK" class="hero-script-logo" onerror="this.src='https://placehold.co/400x150/fff/000?text=Bougie+Dog+Studio+BLK'">
+            <!-- BLK Logo as a tiny signature at the bottom-right -->
+            <img src="images/Bougie Dog Studio BLK.png" alt="Bougie Dog Studio BLK" class="hero-script-logo" onerror="this.src='https://placehold.co/400x150/fff/000?text=BDS+BLK'">
         </section>
 
         <!-- Gallery Grid -->
         <main class="work-grid" id="work">
-            <!-- STICKERS: Expanded to 6 images -->
+            <!-- STICKERS -->
             <article class="work-item" onclick="openDetail('STICKERS', 'GALLERY', '愛らしいわんこやにゃんこのステッカー。あなた特製のステッカーも作れます。', [
                 {path: 'images/stickers/stickers1.png'},
                 {path: 'images/stickers/stickers2.png'},
@@ -411,10 +417,9 @@
                 {path: 'images/stickers/stickers6.png'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/f36f21/white?text=STICKERS" alt="Stickers">
+                    <img src="images/navigation1.png" alt="STICKERS Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=STICKERS'">
                 </div>
                 <div class="work-info">
-                    <h3>STICKERS</h3>
                     <p>愛らしいわんこやにゃんこのステッカー。あなた特製のステッカーも作れます。</p>
                 </div>
             </article>
@@ -429,10 +434,9 @@
                 {path: 'images/apparel/apparel6.png'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/333333/white?text=APPAREL" alt="Apparel">
+                    <img src="images/navigation2.png" alt="APPAREL Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=APPAREL'">
                 </div>
                 <div class="work-info">
-                    <h3>APPAREL</h3>
                     <p>Tシャツ、フーディ、わんこ用ウェアなど。長く愛用できるタフな素材とグラフィック。</p>
                 </div>
             </article>
@@ -447,10 +451,9 @@
                 {path: 'images/goods/goods6.png'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/f36f21/white?text=GOODS" alt="Goods">
+                    <img src="images/navigation3.png" alt="GOODS Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=GOODS'">
                 </div>
                 <div class="work-info">
-                    <h3>GOODS</h3>
                     <p>マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。</p>
                 </div>
             </article>
@@ -462,10 +465,9 @@
                 {path: 'images/print/print3.png'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/333333/white?text=PRINT" alt="Print">
+                    <img src="images/navigation4.png" alt="PRINT Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=PRINT'">
                 </div>
                 <div class="work-info">
-                    <h3>PRINT</h3>
                     <p>名刺がわりのフライヤーでビジネスの魅力を伝えます。</p>
                 </div>
             </article>
@@ -478,10 +480,9 @@
                 {path: 'images/website/website4.png'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/f36f21/white?text=WEBSITE" alt="Website">
+                    <img src="images/navigation5.png" alt="WEBSITE Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=WEBSITE'">
                 </div>
                 <div class="work-info">
-                    <h3>WEBSITE</h3>
                     <p>ディレクションからデザインまで。あなたのビジネスをシンプルでわかりやすく伝えるお手伝い。</p>
                 </div>
             </article>
@@ -493,10 +494,9 @@
                 {path: 'images/soundlogo/soundlogo3.png', caption: 'アーティストRemixes（comingsoon）'}
             ])">
                 <div class="work-image">
-                    <img src="https://placehold.co/800x800/333333/white?text=SOUND+LOGO" alt="Sound Logo">
+                    <img src="images/navigation6.png" alt="SOUND LOGO Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=SOUND+LOGO'">
                 </div>
                 <div class="work-info">
-                    <h3>SOUND LOGO</h3>
                     <p>「音のブランディング」とオーディオ・アイデンティティ。</p>
                 </div>
             </article>
@@ -511,7 +511,7 @@
             
             <div class="music-card">
                 <div class="music-header">
-                    <img src="images/Bougie Dog Club RED.png" alt="Bougie Dog Club RED" class="bdc-logo-red" onerror="this.src='https://placehold.co/100x100/ff0000/fff?text=BDS+RED'">
+                    <img src="images/Bougie Dog Club RED.png" alt="Bougie Dog Club RED" class="bdc-logo-red" onerror="this.src='https://placehold.co/100x100/ff0000/fff?text=BDC+RED'">
                     <div>
                         <span style="font-size: 0.7rem; font-weight: 900; opacity: 0.5;">MUSIC PROJECT</span>
                         <h4 style="font-size: 1.1rem;">BOUGIE DOG CLUB</h4>
