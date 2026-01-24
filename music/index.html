@@ -136,6 +136,90 @@
             line-height: 0;
         }
 
+        /* --- Gemini AI Features --- */
+        .ai-section {
+            padding: 60px 30px;
+            background-color: var(--bg);
+            border-bottom: var(--border-width) solid var(--black);
+        }
+
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .ai-card {
+            background: var(--white);
+            border: var(--border-width) solid var(--black);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .ai-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ai-card h3 { font-size: 2rem; color: var(--primary); flex-grow: 1; }
+
+        /* O-chan Icon Style */
+        .ochan-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--black);
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background-color: #eee;
+            object-fit: cover;
+        }
+        .ochan-avatar:hover { transform: scale(1.1) rotate(5deg); }
+        .ochan-avatar:active { transform: scale(0.95); }
+
+        .ai-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ai-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--black);
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            outline: none;
+        }
+
+        .ai-btn {
+            background: var(--black);
+            color: var(--white);
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .ai-btn:hover { background: var(--primary); color: var(--black); }
+        .ai-btn:disabled { opacity: 0.5; cursor: wait; }
+
+        .ai-result {
+            margin-top: 10px;
+            padding: 20px;
+            background: #eee;
+            border-left: 10px solid var(--primary);
+            font-weight: 700;
+            line-height: 1.5;
+            min-height: 60px;
+        }
+
         /* --- Artist Cards --- */
         .artists-grid {
             display: grid;
@@ -217,10 +301,6 @@
             background: #000;
         }
 
-        .iframe-container.shorts {
-            padding-bottom: 177.77%; /* 9:16 for Shorts */
-        }
-
         .iframe-container iframe {
             position: absolute;
             top: 0;
@@ -274,14 +354,14 @@
 
         /* Responsive */
         @media (max-width: 1100px) {
-            .player-grid, .video-layout { grid-template-columns: 1fr; }
-            .iframe-container.shorts { max-width: 400px; margin: 0 auto; width: 100%; }
+            .player-grid, .video-layout, .ai-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
             header { flex-direction: column; gap: 15px; }
             .hero { padding: 40px 20px 80px 20px; }
-            .player-box, .artist-card { padding: 25px; }
+            .player-box, .artist-card, .ai-card { padding: 25px; }
+            .ochan-avatar { width: 60px; height: 60px; }
         }
     </style>
 </head>
@@ -297,6 +377,7 @@
             <nav>
                 <ul>
                     <li><a href="#sound">The Sound</a></li>
+                    <li><a href="#ai">AI Tips</a></li>
                     <li><a href="#artists">Artists</a></li>
                     <li><a href="#visuals">Visuals</a></li>
                     <li><a href="https://bougiedogstudio.com">Main Site</a></li>
@@ -326,7 +407,39 @@
                 <h3>LATEST DROPS</h3>
                 <p style="font-weight: 700;">All project updates.<br>レーベル所属アーティストによる最新のリリース・プレイリスト。</p>
                 <div class="embed-wrapper">
-                    <iframe style="border-radius:0px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM3M?utm_source=generator&theme=0" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    <iframe style="border-radius:0px" src="https://open.spotify.com/embed/playlist/3RDbCIqUx2uS8OfSZQH1a3?utm_source=generator&theme=0" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI VIBE & INSIGHTS -->
+        <h2 class="section-title" id="ai">AI Insights</h2>
+        <section class="ai-section">
+            <div class="ai-grid">
+                <!-- Music Vibe Checker -->
+                <div class="ai-card">
+                    <div class="ai-card-header">
+                        <h3>VIBE CHECK</h3>
+                    </div>
+                    <p style="font-weight: 700;">今の気分を教えてください。あなたにぴったりのサウンドを提案します。</p>
+                    <div class="ai-input-group">
+                        <input type="text" id="vibeInput" class="ai-input" placeholder="例: 雨の日、少し静かに集中したい...">
+                        <button id="vibeBtn" class="ai-btn" onclick="getAIVibe()">✨ GET MY SOUNDTRACK</button>
+                    </div>
+                    <div id="vibeResult" class="ai-result">AIがあなたの気分を分析中...（入力を待機しています）</div>
+                </div>
+
+                <!-- O-chan Insight with Icon (UPDATED) -->
+                <div class="ai-card">
+                    <div class="ai-card-header">
+                        <h3>O-CHAN'S INSIGHT</h3>
+                        <img src="ochanicon.png" alt="O-chan Icon" class="ochan-avatar" title="おーちゃんをタップ！" onclick="getStrollInsight()" onerror="this.src='https://placehold.co/100x100/e62117/fff?text=ICON'">
+                    </div>
+                    <p style="font-weight: 700;">おーちゃんから「今日を少し良くする」ヒントをもらいましょう。</p>
+                    <div class="ai-input-group">
+                        <button id="insightBtn" class="ai-btn" onclick="getStrollInsight()">✨ GET A HINT FOR TODAY</button>
+                    </div>
+                    <div id="insightResult" class="ai-result">今日を楽しく過ごすための言葉を届けます。</div>
                 </div>
             </div>
         </section>
@@ -334,7 +447,6 @@
         <!-- OUR ARTISTS -->
         <h2 class="section-title" id="artists">Our Artists</h2>
         <section class="artists-grid">
-            <!-- Bougie Dog Club -->
             <article class="artist-card">
                 <span class="artist-tag">LO-FI R&B</span>
                 <h3>Bougie Dog Club</h3>
@@ -342,7 +454,7 @@
                 <div class="artist-links">
                     <a href="#" class="social-btn" title="Spotify"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.22.361-.692.472-1.053.252-2.903-1.774-6.558-2.176-10.865-1.192-.413.094-.825-.164-.919-.577-.094-.413.164-.825.577-.919 4.707-1.075 8.761-.617 12.008 1.366.361.22.472.692.252 1.053z"/></svg></a>
                     <a href="https://music.apple.com/jp/playlist/bougie-dog-club-essentials/pl.u-11zP6zgs8A6Jqx" target="_blank" class="social-btn" title="Apple Music"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.5 13.5c0 2.485-2.015 4.5-4.5 4.5s-4.5-2.015-4.5-4.5V8h2v5.5c0 1.381 1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5V6h2v7.5z"/></svg></a>
-                    <a href="https://www.youtube.com/channel/UCnBMkjrE480HUlTWu4TGGMg" target="_blank" class="social-btn" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186C24 12 24 12 24 12s0 3.93-.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="https://www.youtube.com/channel/UCnBMkjrE480HUlTWu4TGGMg" target="_blank" class="social-btn" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186C24 12 24 12 24 12s0 3.93-.502 5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                     <a href="#" class="social-btn" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.032 2.61.1 3.86.37.03 1.25.32 2.45.85 3.54.67-.1 1.37-.16 2.07-.17v3.31c-1.39 0-2.73.34-3.92 1.02.01 4.25-.01 8.5-.02 12.75-.01 3.12-2.54 5.65-5.66 5.66-3.12.01-5.65-2.53-5.66-5.65 0-3.12 2.53-5.65 5.65-5.66.17 0 .34.01.5.03v3.34c-.17-.02-.33-.03-.5-.03-1.28 0-2.32 1.04-2.32 2.32s1.04 2.32 2.32 2.32c1.27 0 2.31-1.03 2.32-2.3-.01-6.19 0-12.38.01-18.57.01-1.24-.03-2.48-.09-3.71.01 0 .02-.01.03-.02z"/></svg></a>
                     <a href="https://www.instagram.com/bougiedogclub?igsh=cmdoNXF0NTNhdDRz&utm_source=qr" target="_blank" class="social-btn" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
                 </div>
@@ -356,7 +468,7 @@
                 <div class="artist-links">
                     <a href="#" class="social-btn" title="Spotify"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.22.361-.692.472-1.053.252-2.903-1.774-6.558-2.176-10.865-1.192-.413.094-.825-.164-.919-.577-.094-.413.164-.825.577-.919 4.707-1.075 8.761-.617 12.008 1.366.361.22.472.692.252 1.053z"/></svg></a>
                     <a href="#" class="social-btn" title="Apple Music"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.5 13.5c0 2.485-2.015 4.5-4.5 4.5s-4.5-2.015-4.5-4.5V8h2v5.5c0 1.381 1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5V6h2v7.5z"/></svg></a>
-                    <a href="#" class="social-btn" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186C24 12 24 12 24 12s0 3.93-.502 5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="https://www.youtube.com/channel/UCnBMkjrE480HUlTWu4TGGMg" target="_blank" class="social-btn" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186C24 12 24 12 24 12s0 3.93-.502 5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                     <a href="#" class="social-btn" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.032 2.61.1 3.86.37.03 1.25.32 2.45.85 3.54.67-.1 1.37-.16 2.07-.17v3.31c-1.39 0-2.73.34-3.92 1.02.01 4.25-.01 8.5-.02 12.75-.01 3.12-2.54 5.65-5.66 5.66-3.12.01-5.65-2.53-5.66-5.65 0-3.12 2.53-5.65 5.65-5.66.17 0 .34.01.5.03v3.34c-.17-.02-.33-.03-.5-.03-1.28 0-2.32 1.04-2.32 2.32s1.04 2.32 2.32 2.32c1.27 0 2.31-1.03 2.32-2.3-.01-6.19 0-12.38.01-18.57.01-1.24-.03-2.48-.09-3.71.01 0 .02-.01.03-.02z"/></svg></a>
                     <a href="https://x.com/wasabiman246?s=21" target="_blank" class="social-btn" title="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
                 </div>
@@ -369,7 +481,7 @@
                 <p>ジャズバンドが奏でる、少し大人なソウル＆R&B. オーガニックで洗練されたサウンドと独自のメロディ。</p>
                 <div class="artist-links">
                     <a href="#" class="social-btn" title="Spotify"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.306c-.22.361-.692.472-1.053.252-2.903-1.774-6.558-2.176-10.865-1.192-.413.094-.825-.164-.919-.577-.094-.413.164-.825.577-.919 4.707-1.075 8.761-.617 12.008 1.366.361.22.472.692.252 1.053z"/></svg></a>
-                    <a href="#" class="social-btn" title="Apple Music"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12z"/></svg></a>
+                    <a href="#" class="social-btn" title="Apple Music"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.5 13.5c0 2.485-2.015 4.5-4.5 4.5s-4.5-2.015-4.5-4.5V8h2v5.5c0 1.381 1.119 2.5 2.5 2.5s2.5-1.119 2.5-2.5V6h2v7.5z"/></svg></a>
                     <a href="https://www.instagram.com/ryoki_k?igsh=NGY3Y2tjdG5qaG92&utm_source=qr" target="_blank" class="social-btn" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
                     <a href="https://x.com/ryo_ki?s=21" target="_blank" class="social-btn" title="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
                 </div>
@@ -439,6 +551,81 @@
     </div>
 
     <script>
+        // API Config
+        const apiKey = ""; // API key is provided by the environment
+        const modelName = "gemini-2.5-flash-preview-09-2025";
+
+        // Exponential Backoff API Call Helper
+        async function fetchGemini(prompt, systemInstruction) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+
+            for (let i = 0; i < 5; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('Network error');
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "すみません、うまく言葉が見つかりませんでした。";
+                } catch (error) {
+                    if (i === 4) return "エラーが発生しました。しばらくしてから再度お試しください。";
+                    await new Promise(r => setTimeout(r, Math.pow(2, i) * 1000));
+                }
+            }
+        }
+
+        // Vibe Check Function
+        async function getAIVibe() {
+            const input = document.getElementById('vibeInput').value;
+            const btn = document.getElementById('vibeBtn');
+            const resultDiv = document.getElementById('vibeResult');
+            
+            if (!input) {
+                resultDiv.innerText = "何かキーワードを入力してください！";
+                return;
+            }
+
+            btn.disabled = true;
+            resultDiv.innerText = "✨ 感性をシンクロさせています...";
+
+            const systemPrompt = `あなたはBougie Dog Studio Musicのコンシェルジュです。
+            私たちのレーベルには以下のアーティストがいます。
+            1. Bougie Dog Club (Lo-fi R&B/季節感/穏やか)
+            2. wasabi-man (Future Bass/DJ/刺激的/エネルギッシュ)
+            3. ryo-ki (Organic Soul/ジャズ/洗練)
+            4. O-chan (Daily Vibes/アンビエント/散歩/癒やし)
+            ユーザーの気分に合わせて、最適なプロジェクトを1つ選び、その理由を日本語で1文、詩的かつ短いメッセージとして伝えてください。`;
+
+            const res = await fetchGemini(input, systemPrompt);
+            resultDiv.innerText = res;
+            btn.disabled = false;
+        }
+
+        // Updated Insight Function (Tap to get hint)
+        async function getStrollInsight() {
+            const btn = document.getElementById('insightBtn');
+            const resultDiv = document.getElementById('insightResult');
+
+            btn.disabled = true;
+            resultDiv.innerText = "✨ おーちゃんが考え中...";
+
+            const systemPrompt = `あなたはBougie Dog Studioのマスコット「おーちゃん」です。
+            おーちゃんは、散歩だけでなく、日々の生活を楽しく過ごすための達人（犬）です。
+            ユーザーが「今日という一日」を楽しく、心地よく、ポジティブに過ごせるための短いアドバイス（20文字以内）を1つ生成してください。
+            リラックスできる、優しくて前向きな言葉を選んでください。`;
+
+            const res = await fetchGemini("今日を楽しく過ごすためのヒントをください", systemPrompt);
+            resultDiv.innerText = res;
+            btn.disabled = false;
+        }
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
