@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #f36f21; /* Draplin Orange */
@@ -117,8 +118,8 @@
         .hero-script-logo {
             position: absolute;
             bottom: 30px;
-            right: 40px;
-            max-width: 130px;
+            right: 40px; /* Moved to bottom-right */
+            max-width: 130px; /* Small signature size */
             width: 12%;
             height: auto;
             opacity: 0.8;
@@ -153,10 +154,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* Default: Full color for mobile and touch devices */
             filter: grayscale(0%);
             transition: all 0.4s ease;
         }
 
+        /* Apply grayscale interaction ONLY on devices that support hover (PC) */
         @media (hover: hover) {
             .work-image img {
                 filter: grayscale(100%);
@@ -167,6 +170,7 @@
             }
         }
 
+        /* Scale effect for mobile touch to give feedback */
         .work-item:active .work-image img {
             transform: scale(0.98);
         }
@@ -255,6 +259,75 @@
         .music-btn:hover {
             background: var(--primary);
             color: var(--black);
+        }
+
+        /* --- Company Profile Section --- */
+        .company-section {
+            padding: 100px 30px;
+            background-color: var(--white);
+            border-top: var(--border-width) solid var(--black);
+        }
+
+        .company-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .company-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: -0.03em;
+        }
+
+        .company-table {
+            max-width: 950px;
+            margin: 0 auto;
+            border-top: var(--border-width) solid var(--black);
+            border-left: var(--border-width) solid var(--black);
+            border-right: var(--border-width) solid var(--black);
+        }
+
+        .company-row {
+            display: flex;
+            border-bottom: var(--border-width) solid var(--black);
+        }
+
+        .company-label {
+            width: 32%;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 25px 20px;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .company-label span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-top: 5px;
+            font-weight: 700;
+        }
+
+        .company-value {
+            width: 68%;
+            padding: 25px 25px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: center;
+        }
+
+        .company-value ul {
+            list-style-type: square;
+            margin-left: 20px;
+        }
+
+        .company-value li {
+            margin-bottom: 8px;
         }
 
         /* --- Footer & Contact Section --- */
@@ -382,6 +455,7 @@
             .about-music { flex-direction: column; text-align: center; }
             .hero { padding: 60px 20px 100px 20px; }
             
+            /* Mobile Tiny Signature Logo in bottom-right */
             .hero-script-logo { 
                 position: absolute; 
                 bottom: 15px; 
@@ -397,6 +471,19 @@
             .music-links { grid-template-columns: 1fr; }
             .music-header { justify-content: center; flex-direction: column; }
             .detail-content { padding: 20px; }
+            
+            /* Responsive Company Table */
+            .company-row {
+                flex-direction: column;
+            }
+            .company-label {
+                width: 100%;
+                padding: 15px 20px;
+            }
+            .company-value {
+                width: 100%;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -417,6 +504,9 @@
                     <li><a href="#work" onclick="closeDetail()">Print</a></li>
                     <li><a href="#work" onclick="closeDetail()">Website</a></li>
                     <li><a href="#work" onclick="closeDetail()">Sound Logo</a></li>
+                    <li><a href="#work" onclick="closeDetail()">Space</a></li>
+                    <li><a href="#work" onclick="closeDetail()">Experience</a></li>
+                    <li><a href="#company" onclick="closeDetail()">Company</a></li>
                     <li><a href="#contact" onclick="closeDetail()">Contact</a></li>
                 </ul>
             </nav>
@@ -525,6 +615,34 @@
                     <p>「音のブランディング」とオーディオ・アイデンティティ。</p>
                 </div>
             </article>
+
+            <!-- SPACE (民泊事業の実態表現) -->
+            <article class="work-item" onclick="openDetail('SPACE', 'GALLERY', '宿泊施設やレンタルスペースのプロデュース・運営。無骨さと居心地の良さを両立した空間デザイン。', [
+                {path: 'images/space/space1.png'},
+                {path: 'images/space/space2.png'},
+                {path: 'images/space/space3.png'}
+            ])">
+                <div class="work-image">
+                    <img src="images/navigation7.png" alt="SPACE Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=SPACE'">
+                </div>
+                <div class="work-info">
+                    <p>宿泊施設や空間のプロデュース・運営。デザインの力で滞在体験を構築。</p>
+                </div>
+            </article>
+
+            <!-- EXPERIENCE (体験型ツアー事業の実態表現) -->
+            <article class="work-item" onclick="openDetail('EXPERIENCE', 'GALLERY', 'カルチャーを肌で感じる都市型アクティビティの企画・運営。日常を拡張するリアルな体験をデザイン。', [
+                {path: 'images/experience/exp1.png'},
+                {path: 'images/experience/exp2.png'},
+                {path: 'images/experience/exp3.png'}
+            ])">
+                <div class="work-image">
+                    <img src="images/navigation8.png" alt="EXPERIENCE Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=EXPERIENCE'">
+                </div>
+                <div class="work-info">
+                    <p>体験型アクティビティや観光ツアーの企画・運営。リアルな体験をデザイン。</p>
+                </div>
+            </article>
         </main>
 
         <!-- About & Music -->
@@ -550,12 +668,57 @@
             </div>
         </section>
 
+        <!-- Company Profile Section -->
+        <section class="company-section" id="company">
+            <div class="company-header">
+                <h2>COMPANY PROFILE</h2>
+            </div>
+            <div class="company-table">
+                <div class="company-row">
+                    <div class="company-label">COMPANY NAME <span>会社名</span></div>
+                    <div class="company-value">Bougie Dog Studio合同会社</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">FOUNDER <span>代表社員</span></div>
+                    <div class="company-value">古賀 崚暉</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">LOCATION <span>所在地</span></div>
+                    <div class="company-value">東京都港区南青山３丁目１番３６号 青山丸竹ビル６Ｆ</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">ESTABLISHED <span>設立</span></div>
+                    <div class="company-value">2026年8月31日</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">CAPITAL <span>資本金</span></div>
+                    <!-- 審査用に多く見せつつ、デザインは無骨に黒で統一 -->
+                    <div class="company-value">1,000,000円</div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">BUSINESS <span>事業内容</span></div>
+                    <div class="company-value">
+                        <ul>
+                            <li>ウェブサイト、グラフィック、映像等のデザイン、企画及び制作</li>
+                            <li>音楽、音声データ等の企画、制作、配信</li>
+                            <li>各種イベント、体験型アクティビティ及び観光ツアーの企画、運営</li>
+                            <li>宿泊施設の企画、運営、管理及びコンサルティング</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="company-row">
+                    <div class="company-label">CONTACT <span>お問い合わせ</span></div>
+                    <div class="company-value"><a href="mailto:bougiedogstudio@gmail.com" style="color: var(--black); text-decoration: underline;">bougiedogstudio@gmail.com</a></div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer / Contact Area -->
         <footer id="contact">
             <div class="contact-area">
                 <h2>LET'S WORK.</h2>
-                <a href="mailto:BougieDogStudio@gmail.com" class="footer-email">BougieDogStudio@gmail.com</a>
-                <a href="mailto:BougieDogStudio@gmail.com" class="btn contact-btn">CONTACT NOW</a>
+                <a href="mailto:bougiedogstudio@gmail.com" class="footer-email">bougiedogstudio@gmail.com</a>
+                <a href="mailto:bougiedogstudio@gmail.com" class="btn contact-btn">CONTACT NOW</a>
                 <p class="copyright">
                     &copy; 2026 Bougie Dog Studio &bull; BOLD, TRUE, AND READY TO BARK.
                 </p>
