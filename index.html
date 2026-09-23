@@ -498,14 +498,11 @@
             </a>
             <nav>
                 <ul>
-                    <li><a href="#work" onclick="closeDetail()">Stickers</a></li>
                     <li><a href="#work" onclick="closeDetail()">Apparel</a></li>
                     <li><a href="#work" onclick="closeDetail()">Goods</a></li>
                     <li><a href="#work" onclick="closeDetail()">Print</a></li>
                     <li><a href="#work" onclick="closeDetail()">Website</a></li>
                     <li><a href="#work" onclick="closeDetail()">Sound Logo</a></li>
-                    <li><a href="#work" onclick="closeDetail()">Space</a></li>
-                    <li><a href="#work" onclick="closeDetail()">Experience</a></li>
                     <li><a href="#company" onclick="closeDetail()">Company</a></li>
                     <li><a href="#contact" onclick="closeDetail()">Contact</a></li>
                 </ul>
@@ -522,23 +519,6 @@
 
         <!-- Gallery Grid -->
         <main class="work-grid" id="work">
-            <!-- STICKERS -->
-            <article class="work-item" onclick="openDetail('STICKERS', 'GALLERY', '愛らしいわんこやにゃんこのステッカー。あなた特製のステッカーも作れます。', [
-                {path: 'images/stickers/stickers1.png'},
-                {path: 'images/stickers/stickers2.png'},
-                {path: 'images/stickers/stickers3.png'},
-                {path: 'images/stickers/stickers4.png'},
-                {path: 'images/stickers/stickers5.png'},
-                {path: 'images/stickers/stickers6.png'}
-            ])">
-                <div class="work-image">
-                    <img src="images/navigation1.png" alt="STICKERS Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=STICKERS'">
-                </div>
-                <div class="work-info">
-                    <p>愛らしいわんこやにゃんこのステッカー。あなた特製のステッカーも作れます。</p>
-                </div>
-            </article>
-
             <!-- APPAREL -->
             <article class="work-item" onclick="openDetail('APPAREL', 'GALLERY', 'Tシャツ、フーディ、わんこ用ウェアなど。長く愛用できるタフな素材とグラフィック。', [
                 {path: 'images/apparel/apparel1.png'},
@@ -549,15 +529,15 @@
                 {path: 'images/apparel/apparel6.png'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation2.png" alt="APPAREL Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=APPAREL'">
+                    <img src="images/navigation1.png" alt="APPAREL Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=APPAREL'">
                 </div>
                 <div class="work-info">
                     <p>Tシャツ、フーディ、わんこ用ウェアなど。長く愛用できるタフな素材とグラフィック。</p>
                 </div>
             </article>
 
-            <!-- GOODS -->
-            <article class="work-item" onclick="openDetail('GOODS', 'GALLERY', 'マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。', [
+            <!-- GOODS (ステッカー統合) -->
+            <article class="work-item" onclick="openDetail('GOODS', 'GALLERY', 'ステッカー、マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。', [
                 {path: 'images/goods/goods1.png'},
                 {path: 'images/goods/goods2.png'},
                 {path: 'images/goods/goods3.png'},
@@ -566,10 +546,10 @@
                 {path: 'images/goods/goods6.png'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation3.png" alt="GOODS Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=GOODS'">
+                    <img src="images/navigation2.png" alt="GOODS Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=GOODS'">
                 </div>
                 <div class="work-info">
-                    <p>マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。</p>
+                    <p>ステッカー、マグカップや小物など。実用性とデザインを兼ね備えた特製グッズ。</p>
                 </div>
             </article>
 
@@ -580,7 +560,7 @@
                 {path: 'images/print/print3.png'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation4.png" alt="PRINT Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=PRINT'">
+                    <img src="images/navigation3.png" alt="PRINT Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=PRINT'">
                 </div>
                 <div class="work-info">
                     <p>名刺がわりのフライヤーでビジネスの魅力を伝えます。</p>
@@ -595,7 +575,7 @@
                 {path: 'images/website/website4.png'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation5.png" alt="WEBSITE Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=WEBSITE'">
+                    <img src="images/navigation4.png" alt="WEBSITE Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=WEBSITE'">
                 </div>
                 <div class="work-info">
                     <p>ディレクションからデザインまで。あなたのビジネスをシンプルでわかりやすく伝えるお手伝い。</p>
@@ -609,7 +589,7 @@
                 {path: 'images/soundlogo/soundlogo3.png', caption: 'アーティストRemixes（comingsoon）'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation6.png" alt="SOUND LOGO Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=SOUND+LOGO'">
+                    <img src="images/navigation5.png" alt="SOUND LOGO Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=SOUND+LOGO'">
                 </div>
                 <div class="work-info">
                     <p>「音のブランディング」とオーディオ・アイデンティティ。</p>
@@ -623,7 +603,7 @@
                 {path: 'images/space/space3.png'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation7.png" alt="SPACE Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=SPACE'">
+                    <img src="images/navigation6.png" alt="SPACE Navigation" onerror="this.src='https://placehold.co/800x800/f36f21/white?text=SPACE'">
                 </div>
                 <div class="work-info">
                     <p>滞在そのものを「作品」に。世界基準の評価を獲得した宿泊・空間プロデュース。</p>
@@ -637,7 +617,7 @@
                 {path: 'images/experience/exp3.png'}
             ])">
                 <div class="work-image">
-                    <img src="images/navigation8.png" alt="EXPERIENCE Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=EXPERIENCE'">
+                    <img src="images/navigation7.png" alt="EXPERIENCE Navigation" onerror="this.src='https://placehold.co/800x800/333333/white?text=EXPERIENCE'">
                 </div>
                 <div class="work-info">
                     <p>消費される観光から、文化を育む体験へ。カルチャーの深部へ潜るアクティビティ。</p>
