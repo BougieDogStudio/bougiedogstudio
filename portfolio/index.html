@@ -83,6 +83,7 @@
             background: var(--white);
             padding: 8px 16px;
             border: 2px solid var(--black);
+            white-space: nowrap; /* テキストの意図しない改行を防ぐ */
         }
 
         nav a:hover {
@@ -222,8 +223,16 @@
 
         /* Responsive */
         @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
             .profile-grid {
                 grid-template-columns: 1fr;
+            }
+            .card-grid {
+                grid-template-columns: 1fr !important; /* スマホでは必ず1列にする */
             }
             .section-header {
                 font-size: 2rem;
@@ -254,15 +263,15 @@
         <main>
             <!-- Section 1: About the Founder -->
             <section class="portfolio-section">
-                <h2 class="section-header">Section 1: About the Founder & Producer</h2>
+                <h2 class="section-header">SECTION 1: ABOUT THE FOUNDER & PRODUCER</h2>
                 <div class="profile-grid">
                     <div class="profile-img">
-                        <img src="../images/mrk-profile.png" alt="Representative MRK" onerror="this.src='https://placehold.co/800x800/1a1a1a/fff?text=Photo:+MRK'">
+                        <img src="../images/mrk-profile.png" alt="Representative Ryoki" onerror="this.src='https://placehold.co/800x800/1a1a1a/fff?text=Photo:+Representative'">
                     </div>
                     <div class="profile-text">
-                        <h3>■ Representative: MRK</h3>
+                        <h3>■ REPRESENTATIVE: Ryoki Koga</h3>
                         <p class="text-en">
-                            With a degree in Art Business from the US and over 20 years of experience in Japan, MRK specializes in intellectual property, cultural preservation, and cross-cultural hospitality. His career bridges high-end VIP concierge services with deep local business development.
+                            With a degree in Art Business from the US and over 20 years of experience in Japan, Ryoki specializes in intellectual property, cultural preservation, and cross-cultural hospitality. His career bridges high-end VIP concierge services with deep local business development.
                         </p>
                         <p class="text-jp">
                             米国でのアートビジネス専攻と20年以上の実務経験を活かし、知的財産、文化保護、異文化ホスピタリティを専門とする。ハイエンドなVIPコンシェルジュと、ディープなローカルビジネス開発の両輪を手がけるプロデューサー。
@@ -273,7 +282,7 @@
 
             <!-- Section 2: Track Record & Expertise -->
             <section class="portfolio-section" style="background-color: var(--black);">
-                <h2 class="section-header" style="color: var(--white); border-bottom: none;">Section 2: Track Record & Expertise</h2>
+                <h2 class="section-header" style="color: var(--white); border-bottom: none;">SECTION 2: TRACK RECORD & EXPERTISE</h2>
                 <div class="card-grid">
                     
                     <!-- Card 1 -->
@@ -282,12 +291,12 @@
                             <img src="../images/unzen-kominka.png" alt="Unzen Kominka" onerror="this.src='https://placehold.co/800x450/f36f21/fff?text=Photo:+Kominka'">
                         </div>
                         <div class="card-content">
-                            <h3>■ Top-Tier Hospitality (Airbnb Top 3%)</h3>
+                            <h3>■ HIGH-END HOSPITALITY & TURNAROUND CONSULTING</h3>
                             <p class="text-en">
-                                Successfully produced and managed a modernized traditional Japanese house (Kominka) with a private hot spring, earning the "Guest Favorite" (Top 3% globally) status on Airbnb.
+                                Successfully produced and managed a modernized traditional Japanese house (Kominka) with a private hot spring, earning the "Superhost" and "Guest Favorite" status on Airbnb. Leveraging a deep understanding of VIP clientele, this unique business model attracted massive industry attention, leading to a highly successful M&A business transfer and continuous demand for high-end vacation rental turnaround consulting.
                             </p>
                             <p class="text-jp">
-                                プライベート温泉を備えたモダン古民家宿をプロデュース・運営。Airbnbにて世界上位3%の「ゲストのお気に入り」を獲得。
+                                プライベート温泉を備えたモダン古民家宿をプロデュース・運営し、Airbnbにてスーパーホスト、ゲストチョイスを獲得。VIP層のニーズを知り尽くした独自の運営モデルは業界内で高く評価され、多数のオファーの中から事業譲渡（M&A）を成功裏に完了。現在も高級民泊の立て直しや運営コンサルティングの依頼が絶えない。
                             </p>
                         </div>
                     </div>
@@ -298,12 +307,12 @@
                             <img src="../images/bakery.png" alt="Bakery" onerror="this.src='https://placehold.co/800x450/f36f21/fff?text=Photo:+Bakery'">
                         </div>
                         <div class="card-content">
-                            <h3>■ Food Culture Research & Local Business</h3>
+                            <h3>■ FOOD CULTURE RESEARCH & LOCAL BUSINESS</h3>
                             <p class="text-en">
-                                Founded and managed highly popular local bakeries in Tokyo's Ginza area and Kyushu, which famously sold out in 30 minutes. Deeply analyzed Japanese gastronomy from high-end cuisine to local comfort food.
+                                Founded and managed highly popular local bakeries in Tokyo's Tsukiji area and Kyushu. Also selected as a TikTok Official Gourmet Producer ("OSUSUMESHI"), deeply analyzing and promoting Japanese gastronomy from high-end cuisine to local comfort food.
                             </p>
                             <p class="text-jp">
-                                東京・銀座エリアおよび九州にて、30分で完売する人気ベーカリーを創業・経営。高級店からローカルフードまで日本の食文化を深くリサーチ。
+                                東京・築地エリアおよび九州にて、30分で完売する人気ベーカリーを創業・経営。また、TikTok公式グルメプロデューサー（OSUSUMESHI）に選出された経歴も持ち、高級店からローカルフードまで日本の食文化を深くリサーチ・発信。
                             </p>
                         </div>
                     </div>
@@ -314,12 +323,12 @@
                             <img src="../images/cultural-event.png" alt="Cultural Event" onerror="this.src='https://placehold.co/800x450/f36f21/fff?text=Photo:+VIP+Escort'">
                         </div>
                         <div class="card-content">
-                            <h3>■ Cultural Direction & VIP Escort</h3>
+                            <h3>■ CULTURAL DIRECTION & VIP ESCORT</h3>
                             <p class="text-en">
-                                Directed traditional Japanese performing arts programs and coordinated cultural immersion events for a national broadcasting network. Officially escorted global VIPs and international dignitaries in Tokyo.
+                                Building on VIP relations expertise developed at a top-tier global investment bank, Ryoki delivers unparalleled cross-cultural hospitality. Track record includes directing cultural immersion programs for a national broadcasting network and planning exclusive seminars and cultural tours for high-ranking ASEAN officials under the Agency for Cultural Affairs. Holds an extensive history of officially escorting global VIPs, including the family of a prominent international hotel tycoon across Tokyo and Kyushu.
                             </p>
                             <p class="text-jp">
-                                国営放送局向けの伝統芸能プログラムの演出や文化体験イベントをコーディネート。東京にて海外要人やグローバルVIPの公式アテンドを担当。
+                                グローバル投資銀行時代に培ったVIPアテンドの経験を礎に、最高峰のクロスカルチャー・ホスピタリティを提供。国営放送局向けの伝統芸能プログラム演出に加え、文化庁事業においてASEAN高官向けのセミナーおよび文化体験ツアーを企画・統括。世界的ホテル王のファミリーを東京や九州（大分）にてアテンドするなど、国内外の要人に対する卓越した公式アテンド実績を持つ。
                             </p>
                         </div>
                     </div>
@@ -329,10 +338,10 @@
 
             <!-- Section 3: Upcoming Experiences -->
             <section class="portfolio-section">
-                <h2 class="section-header" style="margin-bottom: 20px;">Section 3: Upcoming Experiences</h2>
+                <h2 class="section-header" style="margin-bottom: 20px;">SECTION 3: UPCOMING EXPERIENCES</h2>
                 <p style="text-align: center; font-weight: 900; margin-bottom: 40px; color: var(--black);">(Launching 2026)</p>
                 
-                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                <div class="card-grid">
                     
                     <!-- Card 1 -->
                     <div class="portfolio-card">
@@ -340,7 +349,7 @@
                             <img src="../images/kokura-tour.png" alt="Kokura Tour" onerror="this.src='https://placehold.co/800x450/1a1a1a/fff?text=Photo:+Kokura'">
                         </div>
                         <div class="card-content">
-                            <h3>■ Kyushu (Kokura): "Time Travel Kokura"</h3>
+                            <h3>■ KYUSHU (KOKURA): "TIME TRAVEL KOKURA"</h3>
                             <p class="text-en">
                                 A fully immersive walking tour in Kokura, Fukuoka. Guided by local experts, guests will travel through time—from a Showa-era retro market to a modern mega-supermarket—decoding the evolution of Japanese daily life and pop culture.
                             </p>
@@ -356,7 +365,7 @@
                             <img src="../images/anime-studio.png" alt="Anime Studio" onerror="this.src='https://placehold.co/800x450/1a1a1a/fff?text=Photo:+Anime+Studio'">
                         </div>
                         <div class="card-content">
-                            <h3>■ Tokyo: Animation Studio Experience</h3>
+                            <h3>■ TOKYO: ANIMATION STUDIO EXPERIENCE</h3>
                             <p class="text-en">
                                 An exclusive insider experience into the heart of Japanese pop culture. Currently under development to provide global fans with an authentic look into anime production.
                             </p>
