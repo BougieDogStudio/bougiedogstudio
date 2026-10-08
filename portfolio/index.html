@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 検索避け設定: Airbnbの審査用としてGoogle等にインデックスさせない -->
+    <meta name="robots" content="noindex">
+    
+    <title>Cultural Experience & Tourism | Bougie Dog Studio</title>
+    <!-- Google Fonts: Archivo Black for strong headers, Inter for text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #f36f21; /* Draplin Orange */
+            --black: #1a1a1a;
+            --white: #ffffff;
+            --bg: #f4f4f4;
+            --border-width: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--black);
+            line-height: 1.4;
+            padding: 20px;
+        }
+
+        h1, h2, h3, h4, .logo, nav a, .btn {
+            font-family: 'Archivo Black', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- Layout Containers --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: var(--border-width) solid var(--black);
+            background-color: var(--white);
+            position: relative;
+        }
+
+        /* --- Header --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: var(--border-width) solid var(--black);
+            background-color: var(--primary);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            color: var(--black);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-icon {
+            height: 32px;
+            width: auto;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 900;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+            background: var(--white);
+            padding: 8px 16px;
+            border: 2px solid var(--black);
+        }
+
+        nav a:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* --- Page Title --- */
+        .page-title {
+            padding: 60px 30px;
+            border-bottom: var(--border-width) solid var(--black);
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-title h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1;
+        }
+
+        /* --- Section Shared Styles --- */
+        .portfolio-section {
+            padding: 60px 30px;
+            border-bottom: var(--border-width) solid var(--black);
+        }
+
+        .section-header {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* --- S1: Profile Layout --- */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            border: var(--border-width) solid var(--black);
+            background: #eee;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%);
+        }
+
+        .profile-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .text-en {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .text-jp {
+            font-size: 0.95rem;
+            color: #555;
+            font-weight: 700;
+        }
+
+        /* --- S2 & S3: Card Layouts --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            border: var(--border-width) solid var(--black);
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-bottom: var(--border-width) solid var(--black);
+            overflow: hidden;
+            background: #eee;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+        
+        .portfolio-card:hover .card-img img {
+            filter: grayscale(0%);
+        }
+
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            background-color: var(--white);
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 30px;
+            text-align: center;
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-header {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="../index.html" class="logo">
+                <!-- portfolioフォルダの中にあるため、画像パスは ../images/... になります -->
+                <img src="../images/BarkingBeatsLogo.png" alt="" class="header-icon" onerror="this.src='https://placehold.co/100x100/000/fff?text=ICON'">
+                Bougie Dog Studio
+            </a>
+            <nav>
+                <a href="../index.html">← BACK TO HOME</a>
+            </nav>
+        </header>
+
+        <!-- Main Title -->
+        <div class="page-title">
+            <h1>Cultural Experience <br>& Tourism</h1>
+        </div>
+
+        <main>
+            <!-- Section 1: About the Founder -->
+            <section class="portfolio-section">
+                <h2 class="section-header">Section 1: About the Founder & Producer</h2>
+                <div class="profile-grid">
+                    <div class="profile-img">
+                        <img src="../images/mrk-profile.png" alt="Representative MRK" onerror="this.src='https://placehold.co/800x800/1a1a1a/fff?text=Photo:+MRK'">
+                    </div>
+                    <div class="profile-text">
+                        <h3>■ Representative: MRK</h3>
+                        <p class="text-en">
+                            With a degree in Art Business from the US and over 20 years of experience in Japan, MRK specializes in intellectual property, cultural preservation, and cross-cultural hospitality. His career bridges high-end VIP concierge services with deep local business development.
+                        </p>
+                        <p class="text-jp">
+                            米国でのアートビジネス専攻と20年以上の実務経験を活かし、知的財産、文化保護、異文化ホスピタリティを専門とする。ハイエンドなVIPコンシェルジュと、ディープなローカルビジネス開発の両輪を手がけるプロデューサー。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Track Record & Expertise -->
+            <section class="portfolio-section" style="background-color: var(--black);">
+                <h2 class="section-header" style="color: var(--white); border-bottom: none;">Section 2: Track Record & Expertise</h2>
+                <div class="card-grid">
+                    
+                    <!-- Card 1 -->
+                    <div class="portfolio-card">
+                        <div class="card-img">
+                            <img src="../images/unzen-kominka.png" alt="Unzen Kominka" onerror="this.src='https://placehold.co/800x450/f36f21/fff?text=Photo:+Kominka'">
+                        </div>
+                        <div class="card-content">
+                            <h3>■ Top-Tier Hospitality (Airbnb Top 3%)</h3>
+                            <p class="text-en">
+                                Successfully produced and managed a modernized traditional Japanese house (Kominka) with a private hot spring, earning the "Guest Favorite" (Top 3% globally) status on Airbnb.
+                            </p>
+                            <p class="text-jp">
+                                プライベート温泉を備えたモダン古民家宿をプロデュース・運営。Airbnbにて世界上位3%の「ゲストのお気に入り」を獲得。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="portfolio-card">
+                        <div class="card-img">
+                            <img src="../images/bakery.png" alt="Bakery" onerror="this.src='https://placehold.co/800x450/f36f21/fff?text=Photo:+Bakery'">
+                        </div>
+                        <div class="card-content">
+                            <h3>■ Food Culture Research & Local Business</h3>
+                            <p class="text-en">
+                                Founded and managed highly popular local bakeries in Tokyo's Ginza area and Kyushu, which famously sold out in 30 minutes. Deeply analyzed Japanese gastronomy from high-end cuisine to local comfort food.
+                            </p>
+                            <p class="text-jp">
+                                東京・銀座エリアおよび九州にて、30分で完売する人気ベーカリーを創業・経営。高級店からローカルフードまで日本の食文化を深くリサーチ。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="portfolio-card">
+                        <div class="card-img">
+                            <img src="../images/cultural-event.png" alt="Cultural Event" onerror="this.src='https://placehold.co/800x450/f36f21/fff?text=Photo:+VIP+Escort'">
+                        </div>
+                        <div class="card-content">
+                            <h3>■ Cultural Direction & VIP Escort</h3>
+                            <p class="text-en">
+                                Directed traditional Japanese performing arts programs and coordinated cultural immersion events for a national broadcasting network. Officially escorted global VIPs and international dignitaries in Tokyo.
+                            </p>
+                            <p class="text-jp">
+                                国営放送局向けの伝統芸能プログラムの演出や文化体験イベントをコーディネート。東京にて海外要人やグローバルVIPの公式アテンドを担当。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section 3: Upcoming Experiences -->
+            <section class="portfolio-section">
+                <h2 class="section-header" style="margin-bottom: 20px;">Section 3: Upcoming Experiences</h2>
+                <p style="text-align: center; font-weight: 900; margin-bottom: 40px; color: var(--black);">(Launching 2026)</p>
+                
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                    
+                    <!-- Card 1 -->
+                    <div class="portfolio-card">
+                        <div class="card-img">
+                            <img src="../images/kokura-tour.png" alt="Kokura Tour" onerror="this.src='https://placehold.co/800x450/1a1a1a/fff?text=Photo:+Kokura'">
+                        </div>
+                        <div class="card-content">
+                            <h3>■ Kyushu (Kokura): "Time Travel Kokura"</h3>
+                            <p class="text-en">
+                                A fully immersive walking tour in Kokura, Fukuoka. Guided by local experts, guests will travel through time—from a Showa-era retro market to a modern mega-supermarket—decoding the evolution of Japanese daily life and pop culture.
+                            </p>
+                            <p class="text-jp">
+                                福岡・小倉での没入型街歩きツアー。ローカルエキスパートの案内で、昭和レトロな市場から現代のメガスーパーまでをタイムトラベルし、日本の日常とポップカルチャーの進化を紐解く。
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="portfolio-card">
+                        <div class="card-img">
+                            <img src="../images/anime-studio.png" alt="Anime Studio" onerror="this.src='https://placehold.co/800x450/1a1a1a/fff?text=Photo:+Anime+Studio'">
+                        </div>
+                        <div class="card-content">
+                            <h3>■ Tokyo: Animation Studio Experience</h3>
+                            <p class="text-en">
+                                An exclusive insider experience into the heart of Japanese pop culture. Currently under development to provide global fans with an authentic look into anime production.
+                            </p>
+                            <p class="text-jp">
+                                日本のポップカルチャーの中心部へ潜入する特別な体験。世界中のファンにアニメ制作のリアルを届けるべく現在開発中。
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p class="copyright">
+                &copy; 2026 Bougie Dog Studio &bull; BOLD, TRUE, AND READY TO BARK.
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
